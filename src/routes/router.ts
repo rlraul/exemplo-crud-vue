@@ -6,6 +6,7 @@ import Formulario from '../components/Formulario.vue';
 const routes = [
   { path: '/', component: ListaProdutos },
   { path: '/form', component: Formulario },
+  { path: '/form/:id', component: Formulario },
 ];
 
 const router = createRouter({

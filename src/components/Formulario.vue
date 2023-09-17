@@ -32,10 +32,29 @@ export default defineComponent ({
     data() {
         return {
             produto: {
+                id: undefined,
                 name: '',
                 value: 0,
                 description: '',
             } as IProduto
+        }
+    },
+    mounted() {
+        if (this.$route.params.id) {
+            const id = +this.$route.params.id;
+
+            if (!isNaN(id)) {
+                ProdutoService.findOne(id)
+                .then(response => {
+                    this.produto.id = response.data.id;
+                    this.produto.name = response.data.name;
+                    this.produto.value = response.data.value;
+                    this.produto.description = response.data.description;
+                })
+                .catch(error => {
+                    console.log("Erro ao tentar encontar produto para edição: " + error);
+                })
+            }
         }
     },
     methods: {
