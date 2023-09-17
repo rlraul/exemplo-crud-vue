@@ -5,8 +5,8 @@ const findAll = () => {
     return api.get("/produtos");
 }
 
-const save = (category: IProduto) => {
-    return api.post("/produtos", category);
+const save = (produto: IProduto) => {
+    return api.post("/produtos", produto);
 };
   
 const remove = (id: number) => {
