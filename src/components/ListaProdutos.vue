@@ -17,32 +17,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Placa de Vídeo</td>
-                        <td>R$2000,00</td>
-                        <td>Placa de Vídeo RTX 3060TI 8GB GDDR6x</td>
+                    <tr v-for="produto in produtos" :key="produto.id">
+                        <th scope="row">{{ produto.id }}</th>
+                        <td>{{ produto.name }}</td>
+                        <td>{{ produto.value }}</td>
+                        <td>{{ produto.description }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-
-        <!-- <div>
-            
-        </div>  -->
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ProdutoService from "../services/ProdutoService";
 
 export default defineComponent ({
-    name: 'ListaProdutos'   
+    name: 'ListaProdutos',
+    data() {
+        return {
+            produtos: []
+        };
+    } ,
+    mounted() {
+        ProdutoService.findAll() 
+            .then(response => {
+                this.produtos = response.data;
+            })  
+    } 
 })
 
 </script>
-
-<style>
-    
-</style>
