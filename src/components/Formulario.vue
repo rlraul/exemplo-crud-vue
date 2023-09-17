@@ -1,4 +1,4 @@
-<template >
+<template lang="pt">
     <div class="container w-50">
         <form>
             <div class="mb-3">
