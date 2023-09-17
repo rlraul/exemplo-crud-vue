@@ -4,7 +4,7 @@
             <h3>Cadastro de Produtos</h3>
         </div>
         <div class='mt-2 d-flex justify-content-end'>
-            <router-link to="/form" class="btn btn-primary">Cadastrar</router-link>
+            <router-link to="/form" class="btn btn-primary">Cadastrar</router-link> 
         </div>   
         <div>
             <table class="table table-striped">

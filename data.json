@@ -1,0 +1,16 @@
+{
+    "produtos": [
+        {
+            "id": 0,
+            "name": "Ryzen 5 5600",
+            "value": 800,
+            "description": "Processador AMD Ryzen 5600"
+        },
+        {
+            "id": 1,
+            "name": "RTX 3060TI",
+            "value": 2000,
+            "description": "Placa de Vídeo RTX 3060TI 8GB GDDR6x"
+        }
+    ]
+}

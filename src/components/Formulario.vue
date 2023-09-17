@@ -16,7 +16,7 @@
             
             <div className="text-center m-2">
                 <Button type="button" class="btn btn-success mx-2">Salvar</Button>
-                <Button type="button" class="btn btn-primary">Voltar</Button>
+                <router-link to="/" class="btn btn-primary">Voltar</router-link>
             </div>
         </form>
     </div>
