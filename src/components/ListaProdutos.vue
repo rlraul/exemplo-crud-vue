@@ -27,7 +27,7 @@
                             <div>
                                 <button class="btn mx-2">
                                     <span class="icon">
-                                        <i class="fas fa-pen-to-square text-primary"></i>
+                                        <router-link :to="'/form/' + produto.id" class="fas fa-pen-to-square text-primary"/>
                                     </span>
                                 </button>
                                 <button class="btn" @click="excluirProduto(produto.id)">
@@ -65,7 +65,7 @@ export default defineComponent ({
                 this.produtos = response.data;
             })  
         },
-        
+ 
         excluirProduto(id: number) {
             ProdutoService.remove(id)
             .then(response => {

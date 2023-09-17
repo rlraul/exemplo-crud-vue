@@ -8,6 +8,14 @@ const findAll = () => {
 const save = (produto: IProduto) => {
     return api.post("/produtos", produto);
 };
+
+const update = (id: number, produto: IProduto) => {
+    return api.patch(`/produtos/${id}`, {
+        name: produto.name,
+        value: produto.value,
+        description: produto.description,
+    });
+}
   
 const remove = (id: number) => {
     return api.delete(`/produtos/${id}`);
@@ -20,6 +28,7 @@ const findOne = (id: number) => {
 const ProdutoService = {
     findAll,
     save,
+    update,
     remove,
     findOne,
 }

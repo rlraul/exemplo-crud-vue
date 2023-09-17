@@ -1,6 +1,6 @@
 <template lang="pt">
     <div class="container w-50">
-        <form @submit.prevent="cadastrarProduto">
+        <form @submit.prevent="salvarProduto">
             <div class="mb-3">
                 <label for="name" class="form-label">Nome do produto</label>
                 <input v-model="produto.name" type="text" class="form-control" id="name" placeholder="Nome do Produto">
@@ -58,14 +58,26 @@ export default defineComponent ({
         }
     },
     methods: {
-        async cadastrarProduto() {
-            await ProdutoService.save(this.produto)
+        async salvarProduto() {
+            if (this.produto.id) {
+                await ProdutoService.update(this.produto.id, this.produto)
                 .then(response => {
-                    this.$router.push('/');    
+                    this.$router.push('/');
                 })
                 .catch(error => {
-                    console.log('Erro ao cadastrar produto: ' + error);
-                })
+                    console.log('Erro ao editar produto: ' + error);
+                }); 
+                
+            } else {
+            
+                await ProdutoService.save(this.produto)
+                    .then(response => {
+                        this.$router.push('/');    
+                    })
+                    .catch(error => {
+                        console.log('Erro ao salvar produto: ' + error);
+                    })
+            }
         }
     },
 })
