@@ -14,6 +14,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Descrição</th>
+                    <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,20 @@
                         <td>{{ produto.name }}</td>
                         <td>{{ produto.value }}</td>
                         <td>{{ produto.description }}</td>
+                        <td>
+                            <div>
+                                <button class="btn mx-2">
+                                    <span class="icon">
+                                        <i class="fas fa-pen-to-square text-primary"></i>
+                                    </span>
+                                </button>
+                                <button class="btn" @click="excluirProduto(produto.id)">
+                                    <span class="icon">
+                                        <i class="fas fa-trash text-danger"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -39,13 +54,28 @@ export default defineComponent ({
         return {
             produtos: []
         };
-    } ,
+    },
     mounted() {
-        ProdutoService.findAll() 
+        this.loadData();   
+    },
+    methods: {
+        loadData() {
+            ProdutoService.findAll() 
             .then(response => {
                 this.produtos = response.data;
             })  
-    } 
+        },
+        
+        excluirProduto(id: number) {
+            ProdutoService.remove(id)
+            .then(response => {
+                this.loadData();
+            })
+            .catch(error => {
+                console.log('Erro ao excluir o produto: ' + error);
+            })
+        }
+    },
 })
 
 </script>
