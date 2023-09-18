@@ -36,7 +36,7 @@
         * TypeScript
             > Linguagem que será utilizada
         * Linter / Formater
-            > Utilizado para sinalizar erros de programação, estilísticos e warnings
+            > Utilizado para sinalizar erros de programação e estilísticos
 
         ![Features](https://i.imgur.com/C27SukT.png) 
 
